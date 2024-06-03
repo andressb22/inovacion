@@ -1,0 +1,188 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  
+  <main class="container">
+    <div class="containerMenu" id="containerMenu">
+      <div class="close" id="close">
+        <svg  width="30"  height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+          ><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"
+          ></path></svg
+        >
+      </div>
+      <div>
+        <h2>Menú</h2>
+      </div>
+      <ul>
+        <a href="/28A-osDeInvovacion/"><li>Inicio</li></a>
+        <a href="/28A-osDeInvovacion/Ento"><li>Ento</li></a>
+        <a href="/28A-osDeInvovacion/Barco"><li>Barco</li></a>
+        <a href="/28A-osDeInvovacion/AgroEfens"><li>AgroEfens</li></a>
+        <a href="/28A-osDeInvovacion/Geros"><li>Geros</li></a>
+        <a href="/28A-osDeInvovacion/Guajava"> <li>Guajava</li></a>
+        <a href="/28A-osDeInvovacion/MobiliarioAzul"><li>Mobiliario Azul</li></a>
+        <a href="/28A-osDeInvovacion/MobiliarioSalsa"><li>Mobiliario Salsa</li></a>
+        <a href="/28A-osDeInvovacion/Patineta"><li>Patineta</li></a>
+        <a><li>Fichas tecnicas</li></a>
+      </ul>
+    </div>
+    <div>
+      <img src="../../public/logo.jpg" />
+    </div>
+    <div class="second-child" id="second-child">
+      <p>Bienvenido(a)</p>
+      <div>
+        <button id="cont-image">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+            ><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"
+              fill="#fff"></path></svg
+          >
+        </button>
+      </div>
+    </div>
+  </main>
+  <script>
+    const contImage = document.querySelector("#cont-image");
+    const containerMenu = document.querySelector("#containerMenu");
+    const close = document.querySelector('#close')
+    const handleClick = () => {
+      containerMenu.classList.add("active");
+    };
+  
+    const closeMenu = () =>{
+      containerMenu.classList.remove("active");
+    }
+  
+    contImage.addEventListener("click", handleClick);
+    close.addEventListener('click',closeMenu)
+  </script>
+</Layout>
+
+<style>
+   a {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #fff;
+  }
+  h2 {
+    color: #fff;
+    font-size: 40px;
+  }
+  .close{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  .close svg{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    fill: #fff;
+    cursor: pointer;
+  }
+  .containerMenu.active {
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease;
+  }
+  .containerMenu {
+    position: fixed;
+    left: 100%;
+    transition: all .500s ease;
+    z-index: 10000;
+    width: 100vw;
+    height: 100vh;
+    background-color: #446c8b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .containerMenu > ul {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #fff;
+  }
+
+  .containerMenu > ul li {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 700;
+    border-bottom: 2px solid #2a4b64;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+  }
+  button {
+    background-color: #8eacc3;
+    border-radius: 10px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	cursor: pointer;
+  }
+  button svg {
+    width: 15px;
+    height: 15px;
+  }
+  p{
+	font-weight: 800;
+  }
+  .container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 0.4fr;
+  }
+
+  .container > div {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .container > div img {
+    width: 90%;
+  }
+  .second-child {
+    background-color: #446c8b;
+    padding: 20px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr .5fr;
+  }
+  .second-child > p {
+    color: #fff;
+    font-size: 40px;
+    text-align: left;
+    width: 100%;
+  }
+  #second-child {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr .5fr;
+  }
+  #second-child > div{
+	display: flex;
+	flex-direction: row-reverse;
+  }
+</style>

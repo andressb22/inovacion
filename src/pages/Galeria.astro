@@ -1,0 +1,116 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const images = [
+  "/28A-osDeInvovacion/galeria1.jpeg",
+  "/28A-osDeInvovacion/galeria2.jpeg",
+  "/28A-osDeInvovacion/galeria3.jpeg",
+  "/28A-osDeInvovacion/galeria4.jpeg",
+  "/28A-osDeInvovacion/galeria5.jpeg",
+  "/28A-osDeInvovacion/galeria6.jpeg",
+  "/28A-osDeInvovacion/galeria8.jpeg",
+  "/28A-osDeInvovacion/galeria9.jpeg",
+  "/28A-osDeInvovacion/galeria10.jpeg",
+  "/28A-osDeInvovacion/galeria11.jpeg",
+  // Agrega más rutas de imágenes según sea necesario
+];
+---
+
+<Layout>
+  <div>
+    <h1>Fichas Técnicas</h1>
+  </div>
+  <div class="gallery">
+    {
+      images.map((image, index) => (
+        <img
+          src={image}
+          class="thumbnail"
+          id={`${index}`}
+          onClick={() => expandImage(image)}
+        />
+      ))
+    }
+  </div>
+
+  <div id="overlay" class="overlay">
+    <img id="expandedImg" class="expanded-img" />
+  </div>
+
+  <script>
+    const overlay = document.querySelector("#overlay");
+    function expandImage(src) {
+      const overlay = document.getElementById("overlay");
+      const expandedImg = document.getElementById("expandedImg");
+      expandedImg.src = src;
+      overlay.style.display = "flex";
+    }
+
+    function closeOverlay() {
+      const overlay = document.getElementById("overlay");
+      overlay.style.display = "none";
+    }
+
+    const thumbnails = document.querySelectorAll(".thumbnail");
+    thumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener("click", function () {
+        console.log("se clickea", thumbnail.src);
+        expandImage(thumbnail.src);
+      });
+    });
+    overlay.addEventListener("click", closeOverlay);
+  </script>
+</Layout>
+
+<style>
+    h1{
+        text-align: center;
+        margin-top: 40px;
+    }
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+  }
+
+  .thumbnail {
+    width: 250px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .thumbnail:hover {
+    transform: scale(1.1);
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .expanded-img {
+    max-width: 98%;
+    max-height: 98%;
+    transform: rotate(90deg);
+  }
+  #nextButton > svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  #prevButton > svg {
+    width: 30px;
+    height: 30px;
+  }
+</style>
